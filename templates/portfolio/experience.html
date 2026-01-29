@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Experience{% endblock %}
+
+{% block content %}
+<!-- Experience Section -->
+<section class="experience section" id="experience">
+    <div class="container">
+        <header class="section__header">
+            <h1 class="section__title">Experience & Education</h1>
+            <p class="section__subtitle">My professional journey</p>
+        </header>
+        
+        <div class="timeline-container">
+            <!-- Work Experience -->
+            {% if experiences %}
+            <section class="timeline-section">
+                <h2 class="timeline-section__title">Work Experience</h2>
+                <div class="timeline">
+                    {% for exp in experiences %}
+                    <article class="timeline-item">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <time class="timeline-item__date">
+                                {{ exp.start_date|date:"M Y" }} - {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                            </time>
+                            <h3 class="timeline-item__title">{{ exp.position }}</h3>
+                            <h4 class="timeline-item__company">
+                                {% if exp.company_website %}
+                                <a href="{{ exp.company_website }}" target="_blank" rel="noopener noreferrer">{{ exp.company }}</a>
+                                {% else %}
+                                {{ exp.company }}
+                                {% endif %}
+                            </h4>
+                            {% if exp.location %}
+                            <p class="timeline-item__location">{{ exp.location }}</p>
+                            {% endif %}
+                            <p class="timeline-item__description">{{ exp.description }}</p>
+                            
+                            {% if exp.responsibilities %}
+                            <ul class="timeline-item__list">
+                                {% for responsibility in exp.responsibilities.splitlines %}
+                                {% if responsibility.strip %}
+                                <li>{{ responsibility }}</li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            
+                            {% if exp.technologies %}
+                            <div class="timeline-item__tech">
+                                {% for tech in exp.get_technologies_list %}
+                                <span class="tech-tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+            
+            <!-- Education -->
+            {% if education %}
+            <section class="timeline-section">
+                <h2 class="timeline-section__title">Education</h2>
+                <div class="timeline">
+                    {% for edu in education %}
+                    <article class="timeline-item">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <time class="timeline-item__date">
+                                {{ edu.start_date|date:"Y" }}{% if edu.end_date %} - {{ edu.end_date|date:"Y" }}{% endif %}
+                            </time>
+                            <h3 class="timeline-item__title">{{ edu.degree }}</h3>
+                            <h4 class="timeline-item__company">{{ edu.institution }}</h4>
+                            <p class="timeline-item__field">{{ edu.field_of_study }}</p>
+                            {% if edu.grade %}
+                            <p class="timeline-item__grade">Grade: {{ edu.grade }}</p>
+                            {% endif %}
+                            {% if edu.description %}
+                            <p class="timeline-item__description">{{ edu.description }}</p>
+                            {% endif %}
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

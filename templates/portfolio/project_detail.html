@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+<!-- Project Detail Section -->
+<section class="project-detail section" id="project-detail">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb__item"><a href="{% url 'projects' %}">Projects</a></li>
+                <li class="breadcrumb__item" aria-current="page">{{ project.title }}</li>
+            </ol>
+        </nav>
+        
+        <article class="project-detail__content">
+            <header class="project-detail__header">
+                <h1 class="project-detail__title">{{ project.title }}</h1>
+                {% if project.featured %}
+                <span class="badge badge--featured">Featured Project</span>
+                {% endif %}
+            </header>
+            
+            {% if project.image %}
+            <figure class="project-detail__image">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </figure>
+            {% endif %}
+            
+            <div class="project-detail__info">
+                <section class="project-detail__section">
+                    <h2 class="project-detail__section-title">Overview</h2>
+                    <p class="project-detail__description">{{ project.description }}</p>
+                </section>
+                
+                {% if project.detailed_description %}
+                <section class="project-detail__section">
+                    <h2 class="project-detail__section-title">Details</h2>
+                    <div class="project-detail__text">{{ project.detailed_description|linebreaks }}</div>
+                </section>
+                {% endif %}
+                
+                <section class="project-detail__section">
+                    <h2 class="project-detail__section-title">Technologies Used</h2>
+                    <div class="project-detail__tech">
+                        {% for tech in project.get_technologies_list %}
+                        <span class="tech-tag tech-tag--lg">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </section>
+                
+                <section class="project-detail__section">
+                    <h2 class="project-detail__section-title">Links</h2>
+                    <div class="project-detail__links">
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            View Source Code
+                        </a>
+                        {% endif %}
+                        {% if project.live_url %}
+                        <a href="{{ project.live_url }}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            View Live Demo
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'projects' %}" class="btn btn--outline">Back to Projects</a>
+                    </div>
+                </section>
+                
+                <div class="project-detail__meta">
+                    <time datetime="{{ project.created_at|date:'Y-m-d' }}">
+                        Created: {{ project.created_at|date:"F d, Y" }}
+                    </time>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

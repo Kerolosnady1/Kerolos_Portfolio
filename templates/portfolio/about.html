@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<!-- About Section -->
+<section class="about section" id="about">
+    <div class="container">
+        <header class="section__header">
+            <h1 class="section__title">About Me</h1>
+            <p class="section__subtitle">Get to know me better</p>
+        </header>
+        
+        <div class="about__container">
+            {% if about %}
+            <article class="about__content">
+                {% if about.profile_image %}
+                <figure class="about__image">
+                    <img src="{{ about.profile_image.url }}" alt="{{ about.name }}" class="about__img">
+                </figure>
+                {% endif %}
+                
+                <div class="about__text">
+                    <h2 class="about__name">{{ about.name }}</h2>
+                    <h3 class="about__title">{{ about.title }}</h3>
+                    <p class="about__bio">{{ about.bio|linebreaks }}</p>
+                    
+                    <ul class="about__info">
+                        {% if about.email %}
+                        <li class="about__info-item">
+                            <strong>Email:</strong> <a href="mailto:{{ about.email }}">{{ about.email }}</a>
+                        </li>
+                        {% endif %}
+                        {% if about.phone %}
+                        <li class="about__info-item">
+                            <strong>Phone:</strong> <a href="tel:{{ about.phone }}">{{ about.phone }}</a>
+                        </li>
+                        {% endif %}
+                        {% if about.location %}
+                        <li class="about__info-item">
+                            <strong>Location:</strong> {{ about.location }}
+                        </li>
+                        {% endif %}
+                    </ul>
+                    
+                    {% if about.resume_file %}
+                    <div class="about__actions">
+                        <a href="{{ about.resume_file.url }}" class="btn btn--primary" download>Download Resume</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </article>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+{% if skills %}
+<section class="skills section" id="skills">
+    <div class="container">
+        <header class="section__header">
+            <h2 class="section__title">Skills & Technologies</h2>
+            <p class="section__subtitle">What I work with</p>
+        </header>
+        
+        <div class="skills__container">
+            {% for category, category_skills in skills_by_category.items %}
+            <article class="skills__category">
+                <h3 class="skills__category-title">{{ category|title }}</h3>
+                <div class="skills__list">
+                    {% for skill in category_skills %}
+                    <div class="skill-item" data-proficiency="{{ skill.proficiency }}">
+                        <div class="skill-item__header">
+                            <span class="skill-item__name">{{ skill.name }}</span>
+                            <span class="skill-item__percent">{{ skill.proficiency }}%</span>
+                        </div>
+                        <div class="skill-item__bar">
+                            <div class="skill-item__progress" style="width: {{ skill.proficiency }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

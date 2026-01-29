@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<!-- Contact Section -->
+<section class="contact section" id="contact">
+    <div class="container">
+        <header class="section__header">
+            <h1 class="section__title">Get In Touch</h1>
+            <p class="section__subtitle">Let's work together</p>
+        </header>
+        
+        <div class="contact__container">
+            <!-- Contact Info -->
+            <aside class="contact__info">
+                <h2 class="contact__info-title">Contact Information</h2>
+                {% if about %}
+                <address class="contact__details">
+                    {% if about.email %}
+                    <div class="contact__detail">
+                        <span class="contact__icon">📧</span>
+                        <div class="contact__detail-content">
+                            <h3>Email</h3>
+                            <a href="mailto:{{ about.email }}">{{ about.email }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if about.phone %}
+                    <div class="contact__detail">
+                        <span class="contact__icon">📱</span>
+                        <div class="contact__detail-content">
+                            <h3>Phone</h3>
+                            <a href="tel:{{ about.phone }}">{{ about.phone }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if about.location %}
+                    <div class="contact__detail">
+                        <span class="contact__icon">📍</span>
+                        <div class="contact__detail-content">
+                            <h3>Location</h3>
+                            <p>{{ about.location }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </address>
+                {% endif %}
+                
+                {% if social_links %}
+                <div class="contact__social">
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        {% for link in social_links %}
+                        <a href="{{ link.url }}" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform }}">
+                            <span class="social-icon social-icon--{{ link.platform }}"></span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </aside>
+            
+            <!-- Contact Form -->
+            <div class="contact__form-wrapper">
+                <h2 class="contact__form-title">Send Me a Message</h2>
+                <form method="post" class="contact__form" id="contact-form" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="form__group">
+                        <label for="name" class="form__label">Your Name *</label>
+                        <input type="text" id="name" name="name" class="form__input" required aria-required="true">
+                        <span class="form__error" id="name-error"></span>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="email" class="form__label">Your Email *</label>
+                        <input type="email" id="email" name="email" class="form__input" required aria-required="true">
+                        <span class="form__error" id="email-error"></span>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="subject" class="form__label">Subject *</label>
+                        <input type="text" id="subject" name="subject" class="form__input" required aria-required="true">
+                        <span class="form__error" id="subject-error"></span>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="message" class="form__label">Message *</label>
+                        <textarea id="message" name="message" class="form__textarea" rows="6" required aria-required="true"></textarea>
+                        <span class="form__error" id="message-error"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/contact.js"></script>
+{% endblock %}
