@@ -1,259 +1,290 @@
-# Portfolio Website - Django
+# 🌟 Kerolos Portfolio
 
-A full-stack portfolio website built with Django, MySQL, vanilla JavaScript, semantic HTML, and CSS.
+A modern personal portfolio website built with Django to showcase projects, technical skills, achievements, and professional experience through a clean and responsive user interface.
 
-## Features
+🌐 **Live Demo**  
+https://my-portfolio-8xc1.onrender.com/
 
-- **Home Page**: Hero section with featured projects
-- **About Page**: Personal information, bio, and skills with progress bars
-- **Projects Page**: Showcase of projects with filtering functionality
-- **Experience Page**: Timeline of work experience and education
-- **Contact Page**: Contact form with validation
-- **Admin Panel**: Django admin for content management
-- **Responsive Design**: Mobile-friendly layout
-- **Semantic HTML**: Accessible markup
-- **Vanilla JavaScript**: No frameworks, pure JavaScript
+> ⚠️ This project is hosted on Render's free tier. The first request may take 30–60 seconds while the server wakes up.
 
-## Tech Stack
+---
 
-- **Backend**: Django 4.2
-- **Database**: MySQL
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Image Handling**: Pillow
+# 🖼️ Project Preview
 
-## Prerequisites
+## Home Page
 
-- Python 3.8 or higher
-- MySQL Server 5.7 or higher
-- pip (Python package manager)
+![docs/screenshots/home.png](https://github.com/Kerolosnady1/Kerolos_Portfolio/blob/master/docs/screenshots/home.png?raw=true)
 
-## Installation
+## About Section
 
-### 1. Clone the repository (or use the existing folder)
+![docs/screenshots/about.png](https://github.com/Kerolosnady1/Kerolos_Portfolio/blob/master/docs/screenshots/about.png?raw=true)
 
-```bash
-cd e:\Kerolos_Portfolio
+## Projects Section
+
+![docs/screenshots/projects.png](https://github.com/Kerolosnady1/Kerolos_Portfolio/blob/master/docs/screenshots/projects.png?raw=true)
+
+## Experience Section
+
+![docs/screenshots/experience.png](https://github.com/Kerolosnady1/Kerolos_Portfolio/blob/master/docs/screenshots/experience.png?raw=true)
+
+## Contact Section
+
+![docs/screenshots/contact.png](https://github.com/Kerolosnady1/Kerolos_Portfolio/blob/master/docs/screenshots/contact.png?raw=true)
+
+---
+
+# 📖 Overview
+
+This portfolio website was developed to present my professional profile, technical skills, academic background, and software development projects in a modern and interactive way.
+
+The platform provides visitors with a complete overview of my work, experience, and capabilities while maintaining a clean and responsive design across different screen sizes.
+
+---
+
+# ✨ Features
+
+### 👨‍💻 Personal Branding
+
+- Professional Introduction
+- About Me Section
+- Career Overview
+- Contact Information
+
+### 🚀 Project Showcase
+
+- Featured Projects
+- Project Descriptions
+- Technologies Used
+- Live Demo Links
+- GitHub Repository Links
+
+### 🛠️ Skills Showcase
+
+- Programming Languages
+- Frameworks & Libraries
+- Tools & Technologies
+- Database Technologies
+
+### 📱 Responsive Design
+
+- Desktop Optimized
+- Tablet Friendly
+- Mobile Responsive
+- Modern UI/UX
+
+### ✉️ Contact Section
+
+- Visitor Contact Form
+- Professional Links
+- Social Media Integration
+
+---
+
+# 🎯 Purpose of the Project
+
+The goal of this project is to create a centralized platform that highlights my technical journey and demonstrates practical experience in:
+
+- Django Development
+- Frontend Development
+- Database Design
+- Web Application Deployment
+- Responsive UI Development
+- Full Stack Development
+
+---
+
+# 🛠️ Tech Stack
+
+## Backend
+
+- Python
+- Django
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+## Database
+
+- SQLite
+
+## Deployment
+
+- Render
+
+## Version Control
+
+- Git
+- GitHub
+
+---
+
+# 🏗️ Architecture
+
+```text
+Visitor
+   │
+   ▼
+Django Views
+   │
+   ▼
+Templates
+   │
+   ▼
+Models
+   │
+   ▼
+SQLite Database
 ```
 
-### 2. Create a virtual environment
+---
 
-```bash
-python -m venv venv
+# 📁 Project Structure
+
+```text
+Kerolos_Portfolio/
+│
+├── portfolio/
+│   ├── models.py
+│   ├── views.py
+│   ├── admin.py
+│   ├── urls.py
+│
+├── templates/
+│
+├── static/
+│
+├── media/
+│
+├── manage.py
+├── requirements.txt
+└── README.md
 ```
 
-### 3. Activate the virtual environment
+---
 
-**Windows:**
+# 🚀 Installation
 
-```bash
-venv\Scripts\activate
-```
-
-**Linux/Mac:**
+## Clone Repository
 
 ```bash
-source venv/bin/activate
+git clone https://github.com/Kerolosnady1/Kerolos_Portfolio.git
+
+cd Kerolos_Portfolio
 ```
 
-### 4. Install dependencies
+## Create Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+## Activate Environment
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Configure MySQL Database
-
-Create a MySQL database:
-
-```sql
-CREATE DATABASE portfolio_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-Update database settings in `portfolio_project/settings.py`:
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfolio_db',
-        'USER': 'your_mysql_username',
-        'PASSWORD': 'your_mysql_password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-```
-
-### 6. Run migrations
+## Apply Migrations
 
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 7. Create a superuser
+## Create Superuser
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to create an admin account.
-
-### 8. Collect static files
-
-```bash
-python manage.py collectstatic --noinput
-```
-
-### 9. Run the development server
+## Run Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Visit http://127.0.0.1:8000/ to view the website.
+Open:
 
-## Admin Panel
-
-Access the admin panel at http://127.0.0.1:8000/admin/ to manage content:
-
-- **About**: Personal information and bio
-- **Skills**: Add and manage skills with proficiency levels
-- **Projects**: Add projects with images, descriptions, and links
-- **Experience**: Work experience entries
-- **Education**: Educational background
-- **Contact**: View contact form submissions
-- **Social Links**: Social media links
-
-## Project Structure
-
-```
-Kerolos_Portfolio/
-│
-├── portfolio_project/          # Main project settings
-│   ├── __init__.py
-│   ├── settings.py            # Django settings
-│   ├── urls.py                # Main URL configuration
-│   ├── wsgi.py
-│   └── asgi.py
-│
-├── portfolio/                 # Portfolio app
-│   ├── migrations/
-│   ├── __init__.py
-│   ├── admin.py              # Admin panel configuration
-│   ├── apps.py
-│   ├── models.py             # Database models
-│   ├── views.py              # View functions
-│   └── urls.py               # App URL configuration
-│
-├── templates/                # HTML templates
-│   ├── base.html            # Base template
-│   └── portfolio/
-│       ├── home.html
-│       ├── about.html
-│       ├── projects.html
-│       ├── project_detail.html
-│       ├── experience.html
-│       └── contact.html
-│
-├── static/                   # Static files
-│   ├── css/
-│   │   └── style.css        # Main stylesheet
-│   └── js/
-│       ├── main.js          # Main JavaScript
-│       ├── projects.js      # Projects page script
-│       └── contact.js       # Contact form script
-│
-├── media/                    # User uploaded files (created automatically)
-│   ├── profile/
-│   ├── projects/
-│   └── resume/
-│
-├── manage.py                # Django management script
-├── requirements.txt         # Python dependencies
-└── README.md               # This file
+```text
+http://127.0.0.1:8000/
 ```
 
-## Adding Content
+---
 
-1. Start the development server
-2. Go to http://127.0.0.1:8000/admin/
-3. Log in with your superuser credentials
-4. Add content using the admin interface:
-   - Add your About information (name, title, bio, profile image)
-   - Add skills with categories and proficiency levels
-   - Add projects with images, descriptions, and links
-   - Add work experience and education
-   - Add social media links
+# 💡 Key Highlights
 
-## Customization
+✅ Responsive Design
 
-### Colors and Styling
+✅ Dynamic Content Management
 
-Edit `static/css/style.css` and modify the CSS variables at the top:
+✅ Django Admin Integration
 
-```css
-:root {
-  --primary-color: #3b82f6;
-  --secondary-color: #8b5cf6;
-  /* ... other variables ... */
-}
-```
+✅ Project Showcase System
 
-### Database Configuration
+✅ Professional UI/UX
 
-For production, update `DATABASES` in `portfolio_project/settings.py` with your production database credentials.
+✅ Production Deployment
 
-### Security Settings
+✅ Portfolio Branding
 
-For production deployment:
+✅ Mobile-Friendly Design
 
-1. Change `SECRET_KEY` in `settings.py`
-2. Set `DEBUG = False`
-3. Update `ALLOWED_HOSTS` with your domain
-4. Configure proper static/media file serving
-5. Use environment variables for sensitive data
+---
 
-## Common Issues
+# 🔮 Future Improvements
 
-### mysqlclient installation error
+- Blog System
+- Dark/Light Theme Toggle
+- Downloadable Resume
+- Visitor Analytics Dashboard
+- Project Filtering
+- Multi-Language Support
+- Email Notifications
+- SEO Optimization
 
-If you encounter issues installing mysqlclient on Windows, you may need to:
+---
 
-1. Install Visual C++ Build Tools
-2. Or use an alternative: `pip install pymysql` and add to `settings.py`:
-   ```python
-   import pymysql
-   pymysql.install_as_MySQLdb()
-   ```
+# 🌐 Live Website
 
-### Port already in use
+Visit the live project:
 
-If port 8000 is already in use, run on a different port:
+https://my-portfolio-8xc1.onrender.com/
 
-```bash
-python manage.py runserver 8080
-```
+---
 
-### Static files not loading
+# 👨‍💻 Author
 
-Make sure to run:
+## Kerolos Nady
 
-```bash
-python manage.py collectstatic
-```
+GitHub:  
+https://github.com/Kerolosnady1
 
-## Development Tips
+LinkedIn:  
+https://www.linkedin.com/in/kerolos-farag-3a8378311
 
-- Use `python manage.py makemigrations` after changing models
-- Use `python manage.py shell` for interactive Python shell
-- Use `python manage.py dbshell` for database shell
-- Check for issues: `python manage.py check`
+Portfolio:  
+https://my-portfolio-8xc1.onrender.com/
 
-## License
+---
 
-This project is open source and available for personal and commercial use.
+# ⭐ Support
 
-## Support
+If you like this project, consider giving it a Star ⭐ on GitHub.
 
-For issues or questions, please refer to Django documentation: https://docs.djangoproject.com/
+It helps increase visibility and supports future improvements.
