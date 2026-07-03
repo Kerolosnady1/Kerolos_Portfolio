@@ -7,10 +7,10 @@ django.setup()
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-user = User.objects.get(username='admin')
-user.set_password('admin123')
+user = User.objects.get(username='kerolos')
+user.set_password('kerolos')
 user.save()
 
 print('✓ Admin password set successfully!')
-print('Username: admin')
-print('Password: admin123')
+print('Username: kerolos')
+print('Password: kerolos')
